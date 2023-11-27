@@ -11,6 +11,9 @@ require('dotenv').config();
  // conf. cors
  app.use(cors());
 
+ // Carpeta pública
+app.use( express.static('public') );
+
  //lectura y parseo del body
  app.use(express.json());
 
