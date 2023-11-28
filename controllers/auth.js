@@ -68,12 +68,13 @@ const googleSignIn = async (req, res = response) => {
                 google: true
             })
         } else {
+            //EXISTE USUARIO
             usuario = usuarioDB;
             usuario.google = true;
             // usuario.password = '@@';
         }
 
-        // Guardar Usuario
+        // Guardar Usuario en db
         await usuario.save();
 
         // Generar el TOKEN - JWT
@@ -82,12 +83,10 @@ const googleSignIn = async (req, res = response) => {
 
         res.json({
             ok: true,
-            email, name, picture,
             token
         });
         
     } catch (error) {
-        console.log(error);
         res.status(400).json({
             ok: false,
             msg: 'Token de Google no es correcto'
@@ -95,7 +94,23 @@ const googleSignIn = async (req, res = response) => {
     }
 }
 
+const renewToken = async(req, res = response) => {
+
+    const uid = req.uid;
+
+    // Generar el TOKEN - JWT
+    const token = await generarJWT( uid );
+
+
+    res.json({
+        ok: true,
+        token
+    });
+
+}
+
 module.exports = {
     login,
-    googleSignIn
+    googleSignIn,
+    renewToken
 }
