@@ -76,6 +76,7 @@ const fileUpload = (req, res = response) => {
 }
 
 const retornaImagen = ( req, res = response ) => {
+    
 
     const tipo = req.params.tipo;
     const foto = req.params.foto;
