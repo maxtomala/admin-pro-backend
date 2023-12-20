@@ -47,6 +47,4 @@ router.delete('/:id',
     borrarUsuario
 );
 
-
-
 module.exports = router;

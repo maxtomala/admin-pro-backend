@@ -1,8 +1,6 @@
 const { response } = require('express');
 const bcrypt = require('bcryptjs');
 
-
-
 const Usuario = require('../models/usuario');
 const { generarJWT } = require('../helpers/jwt');
 
@@ -160,10 +158,10 @@ const borrarUsuario = async (req, res = response) => {
 
 }
 
-
 module.exports = {
     getUsuarios,
     CrearUsuario,
     actualizarUsuario,
-    borrarUsuario
+    borrarUsuario,
+
 } 
